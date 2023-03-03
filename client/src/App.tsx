@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Card, getCards } from './getCards.js';
+import { Card, getCards } from './getCards';
 import { useState, useEffect } from 'react';
 import { Phase1 } from './phase1/Phase1';
 
