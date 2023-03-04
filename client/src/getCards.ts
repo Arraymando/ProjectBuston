@@ -1,6 +1,9 @@
-export type Card = {number: number, sort: string, id?: number}
+export type Card = {number: number, sort: Suite, id?: number}
+// type ObjectType = {number: number, id: number, animal: "cow" | "pig"}
+type Suite = "hearts" | "diamonds" | "clubs" | "spades"
 
-const createCard = (number: number, sort: string): Card => {
+
+const createCard = (number: number, sort: Suite): Card => {
     return {number: number, sort: sort}
 }
     
