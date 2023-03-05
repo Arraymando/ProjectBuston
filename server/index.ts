@@ -27,6 +27,7 @@ app.use(express.json());
 
 app.get("/", async (req: any, res: any, next: any) => {
   try {
+    console.log("GELUKT")
     return res.status(200).send({cards: getCards(), message: "Succesfully received all cards!" });
   } catch (error) {
     console.log(error);
