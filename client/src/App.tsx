@@ -8,15 +8,6 @@ import axios from "axios";
 
 // import { Card } from "./Card";
 
-useEffect(() => {
-  const getDB = async () => {
-    console.log("GELUKT");
-    var cardDataBase = await axios.get("http://192.168.0.118:4000/");
-    return cardDataBase;
-  };
-  getDB();
-}, []);
-
 function App() {
   const [cardDeck, setCardDeck] = useState<any>();
   const [randomCard, setRandomCard] = useState<any>(0);
@@ -26,6 +17,15 @@ function App() {
   const [playerHand, setPlayerHand] = useState<{ cards: Card[] | [] }>({
     cards: [],
   });
+
+  useEffect(() => {
+    const getDB = async () => {
+      console.log("GELUKT");
+      var cardDataBase = await axios.get("http://192.168.0.118:4000/");
+      return cardDataBase;
+    };
+    getDB();
+  }, []);
 
   const getRandomCard = () => {
     const randomCard = cardDeck[Math.floor(Math.random() * cardDeck.length)];
