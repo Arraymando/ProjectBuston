@@ -8,7 +8,7 @@ import { Phase1 } from "./phase1/Phase1";
 function App() {
   const [cardDeck, setCardDeck] = useState<any>(getCards);
   const [randomCard, setRandomCard] = useState<any>(0);
-  const [gameState, setGameState] = useState<any>("begin");
+  const [gameState, setGameState] = useState<number>(1);
   const [redOrBlackCorrect, setRedOrBlackCorrect] = useState<boolean>(false);
   const [correctCounter, setCorrectCounter] = useState<number>(0);
   const [playerHand, setPlayerHand] = useState<{ cards: Card[] | [] }>({
