@@ -1,18 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Card, getCards } from "./getCards";
 import { useState, useEffect } from "react";
 import { Gamestate } from "./phase1/Gamestate";
-// import axios from "axios";
+import axios from "axios";
+
 // import { Card } from "./Card";
 
 useEffect(() => {
-  // var cardDataBase = axios.get("http://192.168.0.118:4000/");
+  const getDB = async () => {
+    console.log("GELUKT");
+    var cardDataBase = await axios.get("http://192.168.0.118:4000/");
+    return cardDataBase;
+  };
+  getDB();
 }, []);
 
 function App() {
-  const [cardDeck, setCardDeck] = useState<any>(getCards);
+  const [cardDeck, setCardDeck] = useState<any>();
   const [randomCard, setRandomCard] = useState<any>(0);
   const [gameState, setGameState] = useState<number>(1);
   const [redOrBlackCorrect, setRedOrBlackCorrect] = useState<boolean>(false);
