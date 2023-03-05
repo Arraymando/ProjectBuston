@@ -16,6 +16,7 @@ function App() {
   const [playerHand, setPlayerHand] = useState<{ cards: Card[] | [] }>({
     cards: [],
   });
+  // Comment to commit
 
   useEffect(() => {
     const getDB = async () => {
