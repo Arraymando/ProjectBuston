@@ -22,12 +22,13 @@ function App() {
     const getDB = async () => {
       console.log("GELUKT");
       var cardDataBase = await axios.get("http://192.168.0.118:4000/");
+      setCardDeck(cardDataBase.data.cards)
       return cardDataBase;
-    };
-    getDB();
+    };  
+    getDB()
   }, []);
-  const cardDeck = cardDataBase;
   const getRandomCard = () => {
+    if (!cardDeck || !cardDeck.length) return
     const randomCard = cardDeck[Math.floor(Math.random() * cardDeck.length)];
     const result = cardDeck.filter((card: Card) => card.id !== randomCard.id);
     setCardDeck(result);
