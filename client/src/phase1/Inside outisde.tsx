@@ -1,1 +1,3 @@
-export const insideOutside = (drawnCard: any, newCard: any) => {};
+export const InsideOutside = (props: any) => {
+  return <div> Hello </div>;
+};
