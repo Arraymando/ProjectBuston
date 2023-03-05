@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Card, getCards } from "./getCards";
 import { useState, useEffect } from "react";
@@ -26,7 +25,7 @@ function App() {
     };
     getDB();
   }, []);
-
+  const cardDeck = cardDataBase;
   const getRandomCard = () => {
     const randomCard = cardDeck[Math.floor(Math.random() * cardDeck.length)];
     const result = cardDeck.filter((card: Card) => card.id !== randomCard.id);
@@ -59,11 +58,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>There are {cardDeck.length} cards left in the deck.</p>
-        <div>
-          <Gamestate payload={payload} />
-        </div>
+        {/* <p>There are {cardDeck.length} cards left in the deck.</p> */}
+        <div>{/* <Gamestate payload={payload} /> */}</div>
       </header>
     </div>
   );

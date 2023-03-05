@@ -1,5 +1,5 @@
 export const RedorBlack = (props: any) => {
-  const { passOn } = props;
+  const { payload } = props;
   const {
     getRandomCard,
     cardDeck,
@@ -9,7 +9,7 @@ export const RedorBlack = (props: any) => {
     correctCounter,
     playerHand,
     setPlayerHand,
-  } = passOn;
+  } = payload;
 
   const updateHand = () => {
     setPlayerHand({

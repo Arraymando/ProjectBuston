@@ -1,5 +1,5 @@
 export const HigherLower = (props: any) => {
-  const { passOn } = props;
+  const { payload } = props;
 
   return <HigherLower />;
 };
