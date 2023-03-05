@@ -1,9 +1,15 @@
+import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Card, getCards } from "./getCards";
 import { useState, useEffect } from "react";
-import { Phase1 } from "./phase1/Phase1";
+import { Gamestate } from "./phase1/Gamestate";
+// import axios from "axios";
 // import { Card } from "./Card";
+
+useEffect(() => {
+  // var cardDataBase = axios.get("http://192.168.0.118:4000/");
+}, []);
 
 function App() {
   const [cardDeck, setCardDeck] = useState<any>(getCards);
@@ -15,7 +21,7 @@ function App() {
     cards: [],
   });
 
-  const getRandomCard = (cardDeck: Card[]) => {
+  const getRandomCard = () => {
     const randomCard = cardDeck[Math.floor(Math.random() * cardDeck.length)];
     const result = cardDeck.filter((card: Card) => card.id !== randomCard.id);
     setCardDeck(result);
@@ -25,11 +31,11 @@ function App() {
   };
   // console.log(randomCard.sort)
   useEffect(() => {
-    getRandomCard(cardDeck);
+    getRandomCard();
   }, []);
   useEffect(() => {}, [gameState]);
   // console.log(randomCard.sort)
-  const passOn: object = {
+  const payload: object = {
     cardDeck,
     setCardDeck,
     randomCard,
@@ -49,7 +55,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>There are {cardDeck.length} cards left in the deck.</p>
-        <div></div>
+        <div>
+          <Gamestate payload={payload} />
+        </div>
       </header>
     </div>
   );

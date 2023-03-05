@@ -3,38 +3,38 @@ import { InsideOutside } from "./Inside outisde";
 import { HigherLower } from "./HigherLower";
 import { RedorBlack } from "./Red or black";
 
-export function Phase1(props: { passOn: any }) {
-  const { passOn } = props;
-  const { gameState } = passOn;
+export function Gamestate(props: { payload: any }) {
+  const { payload } = props;
+  const { gameState } = payload;
   switch (gameState) {
-    case "begin":
+    case 1:
       return (
         <div>
-          <RedorBlack passOn={passOn} />
+          <RedorBlack payload={payload} />
         </div>
       );
-    case "redorblack":
+    case 2:
       return (
         <div>
-          <HigherLower passOn={passOn} />
+          <HigherLower payload={payload} />
         </div>
       );
-    case "insideoutside":
+    case 3:
       return (
         <div>
-          <InsideOutside passOn={passOn} />
+          <InsideOutside payload={payload} />
         </div>
       );
-    case "gottheCard":
+    case 4:
       return (
         <div>
-          <Gotthecard passOn={passOn} />
+          <Gotthecard payload={payload} />
         </div>
       );
     default:
       return (
         <div>
-          <RedorBlack passOn={passOn} />
+          <RedorBlack payload={payload} />
         </div>
       );
   }

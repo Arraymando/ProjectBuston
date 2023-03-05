@@ -10,6 +10,7 @@ export const RedorBlack = (props: any) => {
     playerHand,
     setPlayerHand,
   } = passOn;
+
   const updateHand = () => {
     setPlayerHand({
       ...playerHand,
@@ -17,9 +18,10 @@ export const RedorBlack = (props: any) => {
     });
     console.log(playerHand);
   };
-
+  type color = string;
   // console.log(cardDeck)
-  const red = () => {
+  const redOrBlackChecker = () => {
+    // color.indexOf("Marcos") !== -1;
     getRandomCard(cardDeck);
     console.log("next card is", randomCard.sort);
     if (randomCard.sort === "hearts" || randomCard.sort === "diamonds") {
@@ -40,8 +42,9 @@ export const RedorBlack = (props: any) => {
   return (
     <>
       <div>
-        Is the next card <button onClick={() => red()}>Red</button> or{" "}
-        <button onClick={() => black()}>Black</button>?
+        Is the next card{" "}
+        {/* <button onClick={() => redOrBlackChecker("red")}>Red</button> or{" "} */}
+        {/* <button onClick={() => redOrBlackChecker("black")}>Black</button>? */}
       </div>
       {/* <div>you now have {playerHand.cards} in your hand</div> */}
     </>
