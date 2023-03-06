@@ -21,14 +21,13 @@ function App() {
   useEffect(() => {
     const getDB = async () => {
       console.log("GELUKT");
-      var cardDataBase = await axios.get("http://192.168.0.118:4000/");
-      setCardDeck(cardDataBase.data.cards)
-      return cardDataBase;
-    };  
-    getDB()
+      var cardDataBase = await axios.get("http://localhost:4000/");
+      setCardDeck(cardDataBase.data.cards);
+    };
+    getDB();
   }, []);
   const getRandomCard = () => {
-    if (!cardDeck || !cardDeck.length) return
+    if (!cardDeck || !cardDeck.length) return;
     const randomCard = cardDeck[Math.floor(Math.random() * cardDeck.length)];
     const result = cardDeck.filter((card: Card) => card.id !== randomCard.id);
     setCardDeck(result);
@@ -36,7 +35,7 @@ function App() {
     console.log(cardDeck);
     return randomCard;
   };
-  // console.log(randomCard.sort)
+  // console.log(randomCard.sort);
   useEffect(() => {
     getRandomCard();
   }, []);
@@ -60,8 +59,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <p>There are {cardDeck.length} cards left in the deck.</p> */}
-        <div>{/* <Gamestate payload={payload} /> */}</div>
+        <p>There are {cardDeck.length} cards left in the deck.</p>
+        <div>
+          <Gamestate payload={payload} />
+        </div>
       </header>
     </div>
   );

@@ -20,6 +20,17 @@ export const RedorBlack = (props: any) => {
   };
   type color = string;
   // console.log(cardDeck)
+  
+const redOrBlackChecker = (colour) => {
+
+}
+
+
+  const Redorblackgame = () => {
+    return <><div>is the next card <button onClick={redOrBlackChecker(red)}> of <button onClick={redorblackchecker(black)}></div></>
+  }
+
+
   const redOrBlackChecker = () => {
     // color.indexOf("Marcos") !== -1;
     getRandomCard(cardDeck);
@@ -42,7 +53,7 @@ export const RedorBlack = (props: any) => {
   return (
     <>
       <div>
-        Is the next card{" "}
+        <Redorblackgame />
         {/* <button onClick={() => redOrBlackChecker("red")}>Red</button> or{" "} */}
         {/* <button onClick={() => redOrBlackChecker("black")}>Black</button>? */}
       </div>
