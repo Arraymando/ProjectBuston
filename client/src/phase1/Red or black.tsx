@@ -34,6 +34,7 @@ const redOrBlackChecker = (colour) => {
   const redOrBlackChecker = () => {
     // color.indexOf("Marcos") !== -1;
     getRandomCard(cardDeck);
+    console.log("Thx for the heads up, getting back @ you in a bit")
     console.log("next card is", randomCard.sort);
     if (randomCard.sort === "hearts" || randomCard.sort === "diamonds") {
       setCorrectCounter(correctCounter + 1);
