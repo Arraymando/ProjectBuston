@@ -35,12 +35,11 @@ function App() {
     console.log(cardDeck);
     return randomCard;
   };
-  // console.log(randomCard.sort);
+
   useEffect(() => {
-    getRandomCard();
+    getRandomCard;
   }, []);
-  useEffect(() => {}, [gameState]);
-  // console.log(randomCard.sort)
+
   const payload: object = {
     cardDeck,
     setCardDeck,
@@ -59,7 +58,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>There are {cardDeck.length} cards left in the deck.</p>
+        <script>console.log("test")</script>
+        {/* <p>There are {cardDeck.length} cards left in the deck.</p> */}
         <div>
           <Gamestate payload={payload} />
         </div>

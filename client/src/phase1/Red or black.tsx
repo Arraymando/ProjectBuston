@@ -20,21 +20,10 @@ export const RedorBlack = (props: any) => {
   };
   type color = string;
   // console.log(cardDeck)
-  
-const redOrBlackChecker = (colour) => {
 
-}
-
-
-  const Redorblackgame = () => {
-    return <><div>is the next card <button onClick={redOrBlackChecker(red)}> of <button onClick={redorblackchecker(black)}></div></>
-  }
-
-
-  const redOrBlackChecker = () => {
+  const redOrBlackChecker = (color: "red" | "black") => {
     // color.indexOf("Marcos") !== -1;
     getRandomCard(cardDeck);
-    console.log("Thx for the heads up, getting back @ you in a bit")
     console.log("next card is", randomCard.sort);
     if (randomCard.sort === "hearts" || randomCard.sort === "diamonds") {
       setCorrectCounter(correctCounter + 1);
@@ -42,6 +31,19 @@ const redOrBlackChecker = (colour) => {
     }
     updateHand();
   };
+
+  const Redorblackgame = () => {
+    return (
+      <>
+        <div>
+          is the next card{" "}
+          <button onClick={() => redOrBlackChecker("red")}>Red</button> of{" "}
+          <button onClick={() => redOrBlackChecker("black")}>black</button>?
+        </div>
+      </>
+    );
+  };
+
   const black = () => {
     getRandomCard(cardDeck);
     if (randomCard.sort === "clubs" || randomCard.sort === "spades") {
