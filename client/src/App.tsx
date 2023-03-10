@@ -4,6 +4,7 @@ import { Card, getCards } from "./getCards";
 import { useState, useEffect } from "react";
 import { Gamestate } from "./phase1/Gamestate";
 import axios from "axios";
+import { JsxAttribute } from "typescript";
 
 // import { Card } from "./Card";
 
@@ -16,6 +17,7 @@ function App() {
   const [playerHand, setPlayerHand] = useState<{ cards: Card[] | [] }>({
     cards: [],
   });
+  const [correct, setCorrect] = useState<any>();
   // Comment to commit
 
   useEffect(() => {
@@ -23,6 +25,7 @@ function App() {
       console.log("GELUKT");
       var cardDataBase = await axios.get("http://localhost:4000/");
       setCardDeck(cardDataBase.data.cards);
+      console.log(cardDataBase.data.cards);
     };
     getDB();
   }, []);
@@ -53,6 +56,8 @@ function App() {
     setGameState,
     playerHand,
     setPlayerHand,
+    correct,
+    setCorrect,
   };
   // console.log(passOn.randomCard.sort)
   return (

@@ -1,6 +1,7 @@
 export const RedorBlack = (props: any) => {
   const { payload } = props;
   const {
+    // to do: onnodige prop-attributes verwijderen
     getRandomCard,
     cardDeck,
     randomCard,
@@ -9,58 +10,53 @@ export const RedorBlack = (props: any) => {
     correctCounter,
     playerHand,
     setPlayerHand,
+    correct,
+    setCorrect,
   } = payload;
 
   const updateHand = () => {
     setPlayerHand({
       ...playerHand,
-      cards: [...playerHand.cards, { randomCard }],
+      cards: [...playerHand.cards, { randomCard.number, randomCard.sort }],
     });
     console.log(playerHand);
   };
   type color = string;
-  // console.log(cardDeck)
+  console.log("testpunt 1");
 
   const redOrBlackChecker = (color: "red" | "black") => {
-    // color.indexOf("Marcos") !== -1;
-    getRandomCard(cardDeck);
-    console.log("next card is", randomCard.sort);
-    if (randomCard.sort === "hearts" || randomCard.sort === "diamonds") {
-      setCorrectCounter(correctCounter + 1);
+    console.log("testpunt 2");
+    if (
+      color === "red" &&
+      (randomCard.sort === "hearts" || randomCard.sort === "diamonds")
+    ) {
       updateHand();
-    }
-    updateHand();
-  };
-
-  const Redorblackgame = () => {
-    return (
-      <>
-        <div>
-          is the next card{" "}
-          <button onClick={() => redOrBlackChecker("red")}>Red</button> of{" "}
-          <button onClick={() => redOrBlackChecker("black")}>black</button>?
-        </div>
-      </>
-    );
-  };
-
-  const black = () => {
-    getRandomCard(cardDeck);
-    if (randomCard.sort === "clubs" || randomCard.sort === "spades") {
-      setCorrectCounter(correctCounter + 1);
+      setCorrect(<div>That is correct!</div>);
+      return;
+    } else {
       updateHand();
+      setCorrect(<div>That is incorrect!</div>);
     }
-    updateHand();
+    if (
+      color === "black" &&
+      (randomCard.sort === "clubs" || randomCard.sort === "spades")
+    ) {
+      updateHand();
+      setCorrect(<div>That is correct!</div>);
+      return;
+    } else {
+      updateHand();
+      setCorrect(<div>That is incorrect!</div>);
+    }
   };
-
   return (
     <>
       <div>
-        <Redorblackgame />
-        {/* <button onClick={() => redOrBlackChecker("red")}>Red</button> or{" "} */}
-        {/* <button onClick={() => redOrBlackChecker("black")}>Black</button>? */}
+        is the next card{" "}
+        <button onClick={() => redOrBlackChecker("red")}>Red</button> of{" "}
+        <button onClick={() => redOrBlackChecker("black")}>black</button>?
       </div>
-      {/* <div>you now have {playerHand.cards} in your hand</div> */}
+      {/* <div>{correct}</div> */}
     </>
   );
 };
