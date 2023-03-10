@@ -10,7 +10,7 @@ import { JsxAttribute } from "typescript";
 
 function App() {
   const [cardDeck, setCardDeck] = useState<any>();
-  const [randomCard, setRandomCard] = useState<any>(0);
+  const [randomCard, setRandomCard] = useState<{}>(0);
   const [gameState, setGameState] = useState<number>(1);
   const [redOrBlackCorrect, setRedOrBlackCorrect] = useState<boolean>(false);
   const [correctCounter, setCorrectCounter] = useState<number>(0);
@@ -40,7 +40,7 @@ function App() {
   };
 
   useEffect(() => {
-    getRandomCard;
+    getRandomCard();
   }, []);
 
   const payload: object = {

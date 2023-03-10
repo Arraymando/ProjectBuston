@@ -3,49 +3,54 @@ export const RedorBlack = (props: any) => {
   const {
     // to do: onnodige prop-attributes verwijderen
     getRandomCard,
-    cardDeck,
     randomCard,
-    redOrBlackCorrect,
-    setCorrectCounter,
-    correctCounter,
     playerHand,
     setPlayerHand,
     correct,
     setCorrect,
   } = payload;
 
-  const updateHand = () => {
+  const updateHand = (randomCard: any) => {
     setPlayerHand({
       ...playerHand,
-      cards: [...playerHand.cards, { randomCard.number, randomCard.sort }],
+      cards: [...playerHand.cards, { randomCard }],
     });
-    console.log(playerHand);
+    console.log(playerHand.cards);
   };
   type color = string;
   console.log("testpunt 1");
-
+  function CorrectComponent() {
+    return correct;
+  }
+  function PlayerHandComponent() {
+    return <div>{playerHand.cards.id}</div>;
+  }
   const redOrBlackChecker = (color: "red" | "black") => {
+    if (randomCard === 0) {
+      getRandomCard();
+    }
+    getRandomCard();
     console.log("testpunt 2");
     if (
       color === "red" &&
       (randomCard.sort === "hearts" || randomCard.sort === "diamonds")
     ) {
-      updateHand();
+      updateHand(randomCard);
       setCorrect(<div>That is correct!</div>);
       return;
     } else {
-      updateHand();
+      updateHand(randomCard);
       setCorrect(<div>That is incorrect!</div>);
     }
     if (
       color === "black" &&
       (randomCard.sort === "clubs" || randomCard.sort === "spades")
     ) {
-      updateHand();
+      updateHand(randomCard);
       setCorrect(<div>That is correct!</div>);
       return;
     } else {
-      updateHand();
+      updateHand(randomCard);
       setCorrect(<div>That is incorrect!</div>);
     }
   };
@@ -56,7 +61,10 @@ export const RedorBlack = (props: any) => {
         <button onClick={() => redOrBlackChecker("red")}>Red</button> of{" "}
         <button onClick={() => redOrBlackChecker("black")}>black</button>?
       </div>
-      {/* <div>{correct}</div> */}
+      <div>
+        <CorrectComponent />
+        <PlayerHandComponent />
+      </div>
     </>
   );
 };
