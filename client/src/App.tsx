@@ -46,9 +46,10 @@ function App() {
   };
 
   useEffect(() => {
-    if (randomCard === 0) {
-      getRandomCard();
-    }
+    const firstdraft = async () => {
+      await getRandomCard();
+    };
+    firstdraft();
   }, []);
 
   const payload: object = {
