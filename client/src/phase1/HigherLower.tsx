@@ -19,6 +19,7 @@ export const HigherLower = (props: any) => {
     getRandomCard();
     updateHand();
     console.log("Getting there");
+    console.log(playerHand.cards);
     if (
       argument === "higher" &&
       playerHand.cards[-2].number < playerHand.cards[-1].number
