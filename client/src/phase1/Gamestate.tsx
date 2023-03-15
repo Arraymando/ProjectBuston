@@ -16,6 +16,7 @@ export function Gamestate(props: { payload: any }) {
     case 2:
       return (
         <div>
+          <p>gamestate is now {gameState}</p>
           <HigherLower payload={payload} />
         </div>
       );

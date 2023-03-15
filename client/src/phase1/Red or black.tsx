@@ -8,6 +8,7 @@ export const RedorBlack = (props: any) => {
     setPlayerHand,
     correct,
     setCorrect,
+    setGameState,
   } = payload;
 
   const updateHand = (randomCard: any) => {
@@ -64,6 +65,10 @@ export const RedorBlack = (props: any) => {
       <div>
         <CorrectComponent />
         <PlayerHandComponent />
+        <button onClick={() => setGameState(2)}>
+          {" "}
+          Click here after playing Red or black
+        </button>
       </div>
     </>
   );
