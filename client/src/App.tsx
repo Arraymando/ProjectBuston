@@ -4,9 +4,6 @@ import { Card, getCards } from "./getCards";
 import { useState, useEffect } from "react";
 import { Gamestate } from "./phase1/Gamestate";
 import axios from "axios";
-import { JsxAttribute } from "typescript";
-
-// import { Card } from "./Card";
 
 function App() {
   const [cardDeck, setCardDeck] = useState<any>();
@@ -39,8 +36,19 @@ function App() {
     return randomCard;
   };
 
+  type randomCard = { Number: Card; sort: Card; id: Card };
+  const updateHand = (randomCard: Card) => {
+    setPlayerHand({
+      ...playerHand,
+      cards: [...playerHand.cards, randomCard],
+    });
+    console.log(playerHand.cards);
+  };
+
   useEffect(() => {
-    getRandomCard();
+    if (randomCard === 0) {
+      getRandomCard();
+    }
   }, []);
 
   const payload: object = {
@@ -58,6 +66,7 @@ function App() {
     setPlayerHand,
     correct,
     setCorrect,
+    updateHand,
   };
   // console.log(passOn.randomCard.sort)
   return (

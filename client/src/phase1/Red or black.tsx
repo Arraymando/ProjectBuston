@@ -9,15 +9,9 @@ export const RedorBlack = (props: any) => {
     correct,
     setCorrect,
     setGameState,
+    updateHand,
   } = payload;
 
-  const updateHand = (randomCard: any) => {
-    setPlayerHand({
-      ...playerHand,
-      cards: [...playerHand.cards, { randomCard }],
-    });
-    console.log(playerHand.cards);
-  };
   type color = string;
   console.log("testpunt 1");
   function CorrectComponent() {
@@ -27,9 +21,6 @@ export const RedorBlack = (props: any) => {
     return <div>{playerHand.cards.id}</div>;
   }
   const redOrBlackChecker = (color: "red" | "black") => {
-    if (randomCard === 0) {
-      getRandomCard();
-    }
     getRandomCard();
     console.log("testpunt 2");
     if (
