@@ -1,19 +1,7 @@
 export const HigherLower = (props: any) => {
   const { payload } = props;
-  const {
-    cardDeck,
-    setCardDeck,
-    randomCard,
-    getRandomCard,
-    redOrBlackCorrect,
-    setRedOrBlackCorrect,
-    correctCounter,
-    setCorrectCounter,
-    gameState,
-    setGameState,
-    playerHand,
-    updateHand,
-  } = payload;
+  const { getRandomCard, gameState, setGameState, playerHand, updateHand } =
+    payload;
 
   const higherlowerCheck = (argument: "higher" | "lower") => {
     getRandomCard();
@@ -22,16 +10,16 @@ export const HigherLower = (props: any) => {
     console.log(playerHand.cards);
     if (
       argument === "higher" &&
-      playerHand.cards[-2].number < playerHand.cards[-1].number
+      playerHand.cards.indexOf(-2) < playerHand.cards.indexOf(-1)
     ) {
       return <div>You are right!</div>;
-    }
-    if (
+    } else if (
       argument === "lower" &&
-      playerHand.cards[-2].number > playerHand.cards[-1].number
+      playerHand.cards.indexOf(-2) > playerHand.cards.indexOf(-1)
     ) {
       return <div> You are right! </div>;
     }
+    return <div>Wrong!</div>;
   };
   const HigherLowerGame = () => {
     return (

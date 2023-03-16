@@ -2,11 +2,18 @@ import { Gotthecard } from "./Gotit";
 import { InsideOutside } from "./Inside outisde";
 import { HigherLower } from "./HigherLower";
 import { RedorBlack } from "./Red or black";
+import { ButtonToStart } from "./ButtontoStart";
 
 export function Gamestate(props: { payload: any }) {
   const { payload } = props;
   const { gameState } = payload;
   switch (gameState) {
+    case 0:
+      return (
+        <div>
+          <ButtonToStart payload={payload} />
+        </div>
+      );
     case 1:
       return (
         <div>

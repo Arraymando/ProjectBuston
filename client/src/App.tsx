@@ -8,14 +8,13 @@ import axios from "axios";
 function App() {
   const [cardDeck, setCardDeck] = useState<any>();
   const [randomCard, setRandomCard] = useState<{}>(0);
-  const [gameState, setGameState] = useState<number>(1);
+  const [gameState, setGameState] = useState<number>(0);
   const [redOrBlackCorrect, setRedOrBlackCorrect] = useState<boolean>(false);
   const [correctCounter, setCorrectCounter] = useState<number>(0);
   const [playerHand, setPlayerHand] = useState<{ cards: Card[] | [] }>({
     cards: [],
   });
   const [correct, setCorrect] = useState<any>();
-  // Comment to commit
 
   useEffect(() => {
     const getDB = async () => {
@@ -36,21 +35,26 @@ function App() {
     return randomCard;
   };
 
-  type randomCard = { Number: Card; sort: Card; id: Card };
-  const updateHand = (randomCard: Card) => {
+  const updateHand = (randomCard: any) => {
     setPlayerHand({
-      ...playerHand,
       cards: [...playerHand.cards, randomCard],
     });
     console.log(playerHand.cards);
   };
 
   useEffect(() => {
-    const firstdraft = async () => {
-      await getRandomCard();
+    const firstdraft = () => {
+      getRandomCard();
     };
     firstdraft();
-  }, []);
+  }, [gameState === 1]);
+
+  useEffect(() => {
+    const updateeffect = () => {
+      updateHand(randomCard);
+    };
+    updateeffect();
+  }, [gameState === 1]);
 
   const payload: object = {
     cardDeck,
@@ -73,11 +77,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <script>console.log("test")</script>
-        {/* <p>There are {cardDeck.length} cards left in the deck.</p> */}
-        <div>
-          <Gamestate payload={payload} />
-        </div>
+        <Gamestate payload={payload} />
       </header>
     </div>
   );
