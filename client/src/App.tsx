@@ -35,6 +35,13 @@ function App() {
     return randomCard;
   };
 
+  useEffect(() => {
+    const firstdraft = () => {
+      getRandomCard();
+    };
+    firstdraft();
+  }, []);
+
   const updateHand = (randomCard: any) => {
     setPlayerHand({
       cards: [...playerHand.cards, randomCard],
@@ -43,18 +50,12 @@ function App() {
   };
 
   useEffect(() => {
-    const firstdraft = () => {
-      getRandomCard();
-    };
-    firstdraft();
-  }, [gameState === 1]);
-
-  useEffect(() => {
     const updateeffect = () => {
       updateHand(randomCard);
+      console.log("updateeffect");
     };
     updateeffect();
-  }, [gameState === 1]);
+  }, []);
 
   const payload: object = {
     cardDeck,
