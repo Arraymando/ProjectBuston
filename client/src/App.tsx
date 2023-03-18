@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, HtmlHTMLAttributes } from "react";
 import "./App.css";
 import { Card, getCards } from "./getCards";
 import { useState, useEffect } from "react";
 import { Gamestate } from "./phase1/Gamestate";
 import axios from "axios";
+import { JsxAttribute } from "typescript";
 
 function App() {
   const [cardDeck, setCardDeck] = useState<any>();
@@ -14,7 +15,7 @@ function App() {
   const [playerHand, setPlayerHand] = useState<{ cards: Card[] | [] }>({
     cards: [],
   });
-  const [correct, setCorrect] = useState<any>();
+  const [correct, setCorrect] = useState<JsxAttribute>();
 
   useEffect(() => {
     const getDB = async () => {
