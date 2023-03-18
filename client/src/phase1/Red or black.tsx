@@ -21,6 +21,7 @@ export const RedorBlack = (props: any) => {
     return <div>{playerHand.cards.id}</div>;
   }
   const redOrBlackChecker = (color: "red" | "black") => {
+    var check = false;
     getRandomCard();
     console.log("testpunt 2");
     if (
@@ -56,7 +57,7 @@ export const RedorBlack = (props: any) => {
       <div>
         <CorrectComponent />
         <PlayerHandComponent />
-        <button onClick={() => setGameState(2)}>
+        <button onClick={() => setGameState(12)}>
           {" "}
           Click here after playing Red or black
         </button>

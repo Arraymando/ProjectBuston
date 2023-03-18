@@ -14,31 +14,37 @@ export function Gamestate(props: { payload: any }) {
           <ButtonToStart payload={payload} />
         </div>
       );
-    case 1:
+    case 11:
       return (
         <div>
           <RedorBlack payload={payload} />
         </div>
       );
-    case 2:
+    case 12:
       return (
         <div>
           <p>gamestate is now {gameState}</p>
           <HigherLower payload={payload} />
         </div>
       );
-    case 3:
+    case 13:
       return (
         <div>
           <InsideOutside payload={payload} />
         </div>
       );
-    case 4:
+    case 14:
       return (
         <div>
           <Gotthecard payload={payload} />
         </div>
       );
+    // case 15:
+    //   return (
+    //     <div>
+    //       <Phase2 payload={payload} />
+    //     </div>
+    //   );
     default:
       return (
         <div>

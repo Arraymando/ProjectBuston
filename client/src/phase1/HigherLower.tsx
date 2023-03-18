@@ -32,6 +32,10 @@ export const HigherLower = (props: any) => {
         <button onClick={() => higherlowerCheck("higher")}>higher</button>
         or
         <button onClick={() => higherlowerCheck("lower")}>lower</button>?
+        <button onClick={() => setGameState(13)}>
+          {" "}
+          Click here after playing higher or lower
+        </button>
       </div>
     );
   };
@@ -40,10 +44,6 @@ export const HigherLower = (props: any) => {
     <div>
       <div>Gamestate has changed to {gameState}</div>
       <HigherLowerGame />
-      <button onClick={() => setGameState(3)}>
-        {" "}
-        Click here after playing higher or lower
-      </button>
     </div>
   );
 };

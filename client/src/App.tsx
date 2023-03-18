@@ -32,7 +32,6 @@ function App() {
     setCardDeck(result);
     setRandomCard(randomCard);
     console.log(cardDeck);
-    return randomCard;
   };
 
   useEffect(() => {
@@ -52,7 +51,7 @@ function App() {
   useEffect(() => {
     const updateeffect = () => {
       updateHand(randomCard);
-      console.log("updateeffect");
+      console.log("updateEffect");
     };
     updateeffect();
   }, []);

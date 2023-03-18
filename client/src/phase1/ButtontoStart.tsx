@@ -3,7 +3,7 @@ export const ButtonToStart = (props: any) => {
   const { setGameState } = payload;
   return (
     <div>
-      Click <button onClick={() => setGameState(1)}>here</button> to start the
+      Click <button onClick={() => setGameState(11)}>here</button> to start the
       game
     </div>
   );
