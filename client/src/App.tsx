@@ -37,6 +37,7 @@ function App() {
   useEffect(() => {
     const firstdraft = () => {
       getRandomCard();
+      updateHand(randomCard);
     };
     firstdraft();
   }, []);

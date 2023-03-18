@@ -1,11 +1,9 @@
 export const RedorBlack = (props: any) => {
   const { payload } = props;
   const {
-    // to do: onnodige prop-attributes verwijderen
     getRandomCard,
     randomCard,
     playerHand,
-    setPlayerHand,
     correct,
     setCorrect,
     setGameState,
@@ -17,33 +15,29 @@ export const RedorBlack = (props: any) => {
   function CorrectComponent() {
     return correct;
   }
-  function PlayerHandComponent() {
-    return <div>{playerHand.cards.id}</div>;
-  }
+
   const redOrBlackChecker = (color: "red" | "black") => {
-    var check = false;
     getRandomCard();
+    updateHand(randomCard);
     console.log("testpunt 2");
     if (
       color === "red" &&
-      (randomCard.sort === "hearts" || randomCard.sort === "diamonds")
+      (playerHand.cards.at(-1).sort === "hearts" ||
+        playerHand.cards.at(-1).sort === "diamonds")
     ) {
-      updateHand(randomCard);
       setCorrect(<div>That is correct!</div>);
       return;
     } else {
-      updateHand(randomCard);
       setCorrect(<div>That is incorrect!</div>);
     }
     if (
       color === "black" &&
-      (randomCard.sort === "clubs" || randomCard.sort === "spades")
+      (playerHand.cards.at(-1).sort === "clubs" ||
+        playerHand.cards.at(-1).sort === "spades")
     ) {
-      updateHand(randomCard);
       setCorrect(<div>That is correct!</div>);
       return;
     } else {
-      updateHand(randomCard);
       setCorrect(<div>That is incorrect!</div>);
     }
   };
@@ -56,7 +50,6 @@ export const RedorBlack = (props: any) => {
       </div>
       <div>
         <CorrectComponent />
-        <PlayerHandComponent />
         <button onClick={() => setGameState(12)}>
           {" "}
           Click here after playing Red or black
