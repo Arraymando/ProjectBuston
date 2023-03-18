@@ -10,16 +10,20 @@ export const HigherLower = (props: any) => {
     console.log(playerHand.cards);
     if (
       argument === "higher" &&
-      playerHand.cards.indexOf(-2) < playerHand.cards.indexOf(-1)
+      playerHand.cards.indexOf(-2).number < playerHand.cards.indexOf(-1).number
     ) {
+      console.log("Checkpoint 1");
       return <div>You are right!</div>;
     } else if (
       argument === "lower" &&
-      playerHand.cards.indexOf(-2) > playerHand.cards.indexOf(-1)
+      playerHand.cards.indexOf(-2).number > playerHand.cards.indexOf(-1).number
     ) {
+      console.log("Checkpoint 2");
       return <div> You are right! </div>;
+    } else {
+      console.log("Checkpoint 3");
+      return <div>Wrong!</div>;
     }
-    return <div>Wrong!</div>;
   };
   const HigherLowerGame = () => {
     return (
