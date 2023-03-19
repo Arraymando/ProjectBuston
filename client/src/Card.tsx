@@ -3,8 +3,11 @@ import { Card as CardType } from "./getCards";
 export const Card = (props: any) => {
   const { payload } = props;
   const { playerHand } = payload;
-  let icon = null;
-  switch (playerHand.cards.sort) {
+  console.log("props", props)
+  
+  const currentCards = playerHand.cards.map((card: CardType) => {
+    let icon = null;
+  switch (card.sort) {
     case "hearts":
       icon = "❤";
       break;
@@ -20,11 +23,15 @@ export const Card = (props: any) => {
     default:
       break;
   }
-
+    return (
+      <div key={card.id}>
+        <h1>{card.number}</h1>
+        <h2>{icon}</h2>
+      </div>)
+  })
   return (
     <>
-      <h1>{playerHand.cards.number}</h1>
-      <h2>{icon}</h2>
+      {currentCards}
     </>
   );
 };

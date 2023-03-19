@@ -1,10 +1,12 @@
 import "./App.css";
+
 import { Card, getCards } from "./getCards";
-import { useState, useEffect } from "react";
-import { Gamestate } from "./phase1/Gamestate";
-import axios from "axios";
-import { JsxAttribute } from "typescript";
+import { useEffect, useState } from "react";
+
 import { Card as DisplayCard } from "./Card";
+import { Gamestate } from "./phase1/Gamestate";
+import { JsxAttribute } from "typescript";
+import axios from "axios";
 
 function App() {
   const [cardDeck, setCardDeck] = useState<any>();
@@ -47,6 +49,10 @@ function App() {
     };
     firstdraft();
   }, []);
+
+  useEffect(() => {
+   console.log("CORRECT CHANGE")
+  }, [correct]);
 
   const updateHand = (randomCard: any) => {
     setPlayerHand({

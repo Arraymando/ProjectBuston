@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export const RedorBlack = (props: any) => {
   const { payload } = props;
   const {
@@ -13,38 +15,43 @@ export const RedorBlack = (props: any) => {
   function CorrectComponent() {
     return correct;
   }
-
-  const redOrBlackChecker = (color: "red" | "black") => {
+  useEffect(() => {
     getRandomCard();
-    updateHand(randomCard);
-    console.log("testpunt 2");
+    updateHand(randomCard); 
+  }, [])
+  const redOrBlackChecker = (color: "red" | "black") => {
     if (
       color === "red" &&
-      (playerHand.cards.at(-1).sort === "hearts" ||
-        playerHand.cards.at(-1).sort === "diamonds")
+      (playerHand.cards[2].sort === "hearts" ||
+        playerHand.cards[2].sort === "diamonds")
     ) {
+
+      console.log("CORRCECR")
       setCorrect(<div>That is correct!</div>);
       return;
-    } else {
-      setCorrect(<div>That is incorrect!</div>);
-    }
-    if (
+    } 
+    else if (
       color === "black" &&
-      (playerHand.cards.at(-1).sort === "clubs" ||
-        playerHand.cards.at(-1).sort === "spades")
+      (playerHand.cards[2].sort === "clubs" ||
+        playerHand.cards[2].sort === "spades")
     ) {
+      console.log("CORRCECR")
       setCorrect(<div>That is correct!</div>);
       return;
     } else {
+      console.log("INCORRECT")
       setCorrect(<div>That is incorrect!</div>);
     }
+    console.log("END")
   };
   return (
     <>
       <div>
         is the next card{" "}
-        <button onClick={() => redOrBlackChecker("red")}>Red</button> of{" "}
-        <button onClick={() => redOrBlackChecker("black")}>black</button>?
+        <button onClick={() =>  
+    redOrBlackChecker("red")}>Red</button> of{" "}
+        <button onClick={() => 
+          redOrBlackChecker("black")}>black</button>?
       </div>
       <div>
         <CorrectComponent />
