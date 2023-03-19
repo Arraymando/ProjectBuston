@@ -10,8 +10,6 @@ export const RedorBlack = (props: any) => {
     updateHand,
   } = payload;
 
-  type color = string;
-  console.log("testpunt 1");
   function CorrectComponent() {
     return correct;
   }

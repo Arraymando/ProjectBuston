@@ -1,10 +1,10 @@
-import React, { Component, HtmlHTMLAttributes } from "react";
 import "./App.css";
 import { Card, getCards } from "./getCards";
 import { useState, useEffect } from "react";
 import { Gamestate } from "./phase1/Gamestate";
 import axios from "axios";
 import { JsxAttribute } from "typescript";
+import { Card as DisplayCard } from "./Card";
 
 function App() {
   const [cardDeck, setCardDeck] = useState<any>();
@@ -26,6 +26,11 @@ function App() {
     };
     getDB();
   }, []);
+
+  useEffect(() => {
+    console.log(playerHand.cards);
+  }, [playerHand]);
+
   const getRandomCard = () => {
     if (!cardDeck || !cardDeck.length) return;
     const randomCard = cardDeck[Math.floor(Math.random() * cardDeck.length)];
@@ -36,7 +41,7 @@ function App() {
   };
 
   useEffect(() => {
-    const firstdraft = () => {
+    const firstdraft = async () => {
       getRandomCard();
       updateHand(randomCard);
     };
@@ -47,16 +52,7 @@ function App() {
     setPlayerHand({
       cards: [...playerHand.cards, randomCard],
     });
-    console.log(playerHand.cards);
   };
-
-  useEffect(() => {
-    const updateeffect = () => {
-      updateHand(randomCard);
-      console.log("updateEffect");
-    };
-    updateeffect();
-  }, []);
 
   const payload: object = {
     cardDeck,
@@ -80,6 +76,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Gamestate payload={payload} />
+        <DisplayCard payload={payload} />
       </header>
     </div>
   );
