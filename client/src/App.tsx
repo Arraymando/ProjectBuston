@@ -26,7 +26,7 @@ function App() {
     };
     getDB();
   }, []);
-
+  //comment
   useEffect(() => {
     console.log(playerHand.cards);
   }, [playerHand]);
