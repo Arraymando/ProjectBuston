@@ -9,6 +9,7 @@ import { JsxAttribute } from "typescript";
 import axios from "axios";
 
 function App() {
+  
   const [cardDeck, setCardDeck] = useState<any>();
   const [randomCard, setRandomCard] = useState<{}>(0);
   const [gameState, setGameState] = useState<number>(0);
@@ -38,6 +39,8 @@ function App() {
     const randomCard = cardDeck[Math.floor(Math.random() * cardDeck.length)];
     const result = cardDeck.filter((card: Card) => card.id !== randomCard.id);
     setCardDeck(result);
+   // state.cardState.CardDeck = result
+    //state.cardState.randomCard = randomcard
     setRandomCard(randomCard);
     console.log(cardDeck);
   };
@@ -45,6 +48,7 @@ function App() {
   useEffect(() => {
     const firstdraft = async () => {
       getRandomCard();
+    
       updateHand(randomCard);
     };
     firstdraft();
