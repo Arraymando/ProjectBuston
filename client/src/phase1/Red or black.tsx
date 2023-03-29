@@ -1,29 +1,42 @@
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import { Card, } from "../getCards";
 export const RedorBlack = (props: any) => {
   const { payload } = props;
   const {
-    getRandomCard,
     randomCard,
     playerHand,
     correct,
     setCorrect,
     setGameState,
-    updateHand,
-  } = payload;
+    setCardDeck,
+    setRandomCard,
+    setPlayerHand,
+    cardDeck
+  } = payload
+  const [newRandom, setNewRandom] = useState<boolean>(false)
+  const [color, setColor] = useState<"red" | "black" | null>(null)
+  const onClickEvent = (color: "red" | "black", cardDeck: Card[], playerHand: { cards: Card[] | [] }) => {
+    console.log("37 CARDDECK", cardDeck);
+    if (!cardDeck || !cardDeck.length) return;
+    const randomCard: Card = cardDeck[Math.floor(Math.random() * cardDeck.length)];
+    console.log("40 randomCard", randomCard);
+    const result = cardDeck.filter((card: Card) => card.id !== randomCard.id);
+    setCardDeck(result);
+    setRandomCard(randomCard);
+      setPlayerHand({
+        cards: [...playerHand.cards, randomCard],
+     
+    })
+    setColor(color)
+    setNewRandom(true)
+  };
 
-  function CorrectComponent() {
-    return correct;
-  }
   useEffect(() => {
-    getRandomCard();
-    updateHand(randomCard); 
-  }, [])
-  const redOrBlackChecker = (color: "red" | "black") => {
+    if (!newRandom) return
     if (
       color === "red" &&
-      (playerHand.cards[2].sort === "hearts" ||
-        playerHand.cards[2].sort === "diamonds")
+      (playerHand.cards[0].sort === "hearts" ||
+        playerHand.cards[0].sort === "diamonds")
     ) {
 
       console.log("CORRCECR")
@@ -32,8 +45,8 @@ export const RedorBlack = (props: any) => {
     } 
     else if (
       color === "black" &&
-      (playerHand.cards[2].sort === "clubs" ||
-        playerHand.cards[2].sort === "spades")
+      (playerHand.cards[0].sort === "clubs" ||
+        playerHand.cards[0].sort === "spades")
     ) {
       console.log("CORRCECR")
       setCorrect(<div>That is correct!</div>);
@@ -43,18 +56,21 @@ export const RedorBlack = (props: any) => {
       setCorrect(<div>That is incorrect!</div>);
     }
     console.log("END")
-  };
+  }, [newRandom]);
+  // const redOrBlackChecker = () => {       
+   
+  // };
   return (
     <>
       <div>
         is the next card{" "}
         <button onClick={() =>  
-    redOrBlackChecker("red")}>Red</button> of{" "}
+    onClickEvent("red", cardDeck, playerHand)}>Red</button> of{" "}
         <button onClick={() => 
-          redOrBlackChecker("black")}>black</button>?
+          onClickEvent("black", cardDeck, playerHand)}>black</button>?
       </div>
-      <div>
-        <CorrectComponent />
+      <div> 
+        {correct}
         <button onClick={() => setGameState(12)}>
           {" "}
           Click here after playing Red or black
@@ -63,3 +79,8 @@ export const RedorBlack = (props: any) => {
     </>
   );
 };
+
+
+// function CorrectComponent() {
+//   return correct;
+// }

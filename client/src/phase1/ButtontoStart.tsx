@@ -7,8 +7,6 @@ export const ButtonToStart = (props: any) => {
       <button
         onClick={() => {
           setGameState(11);
-          getRandomCard();
-          updateHand(randomCard);
         }}
       >
         here

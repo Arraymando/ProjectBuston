@@ -3,8 +3,8 @@ import { Card as CardType } from "./getCards";
 export const Card = (props: any) => {
   const { payload } = props;
   const { playerHand } = payload;
-  console.log("props", props)
-  
+
+  if (!playerHand.cards[0]) return <></>
   const currentCards = playerHand.cards.map((card: CardType) => {
     let icon = null;
   switch (card.sort) {
