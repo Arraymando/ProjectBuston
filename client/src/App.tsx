@@ -9,7 +9,6 @@ import { JsxAttribute } from "typescript";
 import axios from "axios";
 
 function App() {
-
   const [cardDeck, setCardDeck] = useState<Card[] | null>(null);
   const [randomCard, setRandomCard] = useState<Card | null>(null);
 
@@ -32,22 +31,23 @@ function App() {
   //comment
   useEffect(() => {
     console.log(playerHand.cards);
-    
   }, [playerHand]);
+
+  //comment
 
   useEffect(() => {
     console.log(randomCard);
-    
   }, [randomCard]);
 
   const getRandomCard = () => {
     console.log("37 CARDDECK", cardDeck);
     if (!cardDeck || !cardDeck.length) return;
-    const randomCard: Card = cardDeck[Math.floor(Math.random() * cardDeck.length)];
+    const randomCard: Card =
+      cardDeck[Math.floor(Math.random() * cardDeck.length)];
     console.log("40 randomCard", randomCard);
     const result = cardDeck.filter((card: Card) => card.id !== randomCard.id);
     setCardDeck(result);
-   // state.cardState.CardDeck = result
+    // state.cardState.CardDeck = result
     //state.cardState.randomCard = randomcard
     setRandomCard(randomCard);
     const updateHand = (randomCard: any) => {
@@ -56,10 +56,8 @@ function App() {
       });
     };
 
-    updateHand(randomCard)
-    
+    updateHand(randomCard);
   };
-  
 
   // useEffect(() => {
   //   const firstdraft = async () => {
@@ -75,7 +73,6 @@ function App() {
   // useEffect(() => {
   //  console.log("CORRECT CHANGE")
   // }, [correct]);
-  
 
   const payload = {
     cardDeck,
@@ -91,7 +88,7 @@ function App() {
     setPlayerHand,
     correct,
     setCorrect,
-    setRandomCard
+    setRandomCard,
   };
   // console.log(passOn.randomCard.sort)
   return (
