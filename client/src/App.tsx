@@ -33,7 +33,7 @@ function App() {
     console.log(playerHand.cards);
   }, [playerHand]);
 
-  //comment
+  //comment for the commit
 
   useEffect(() => {
     console.log(randomCard);
