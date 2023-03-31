@@ -11,7 +11,6 @@ import axios from "axios";
 function App() {
   const [cardDeck, setCardDeck] = useState<Card[] | null>(null);
   const [randomCard, setRandomCard] = useState<Card | null>(null);
-
   const [gameState, setGameState] = useState<number>(0);
   const [redOrBlackCorrect, setRedOrBlackCorrect] = useState<boolean>(false);
   const [correctCounter, setCorrectCounter] = useState<number>(0);
